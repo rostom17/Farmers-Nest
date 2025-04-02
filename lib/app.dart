@@ -25,6 +25,15 @@ class FarmersNest extends StatelessWidget {
 
       appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
 
+      searchBarTheme: SearchBarThemeData(
+        backgroundColor: WidgetStatePropertyAll(ColorPallet.whileColor),
+        elevation: WidgetStatePropertyAll(0),
+        shape: WidgetStatePropertyAll(
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+        ),
+        side: WidgetStatePropertyAll(BorderSide(color: Colors.grey.shade800)),
+      ),
+
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: Colors.transparent,
         surfaceTintColor: ColorPallet.mainColorTheme,
