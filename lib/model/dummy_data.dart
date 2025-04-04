@@ -210,7 +210,7 @@ class ProductData {
       "ratings": 4.6,
       "available": true,
       "stockAmount": 70,
-      "image": "",
+      "image": "https://www.shutterstock.com/image-photo/cosmetics-bottles-natural-handmade-soap-260nw-144549866.jpg",
     },
     {
       "productId": 1014,
@@ -226,7 +226,7 @@ class ProductData {
       "ratings": 4.4,
       "available": true,
       "stockAmount": 90,
-      "image": "",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgTgN6Hyzh9mU9a2K0P0bvWRWNJadMHCvlZw&s",
     },
     {
       "productId": 1015,
@@ -242,7 +242,7 @@ class ProductData {
       "ratings": 4.3,
       "available": true,
       "stockAmount": 35,
-      "image": "",
+      "image": "https://www.thefruitcompany.com/cdn/shop/products/mountain-blueberries_grande.jpg?v=1720715612",
     },
     {
       "productId": 1016,
@@ -258,7 +258,7 @@ class ProductData {
       "ratings": 4.8,
       "available": true,
       "stockAmount": 25,
-      "image": "",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaQ7ZI7xbuTBcF8xij-5eii_9kYZGh1n9pfw&s",
     },
     {
       "productId": 1017,
