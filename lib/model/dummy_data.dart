@@ -146,7 +146,7 @@ class ProductData {
       "ratings": 4.1,
       "available": true,
       "stockAmount": 45,
-      "image": "",
+      "image": "https://media.istockphoto.com/id/1342679798/photo/mix-of-different-frozen-vegetables-on-wooden-board-on-the-table-frozen-food.jpg?s=612x612&w=0&k=20&c=TdVUZJA0FIrI2dl7fAo7kTM1QhfsWzX7rW161ham0To=",
     },
     {
       "productId": 1010,
@@ -162,7 +162,7 @@ class ProductData {
       "ratings": 4.3,
       "available": true,
       "stockAmount": 65,
-      "image": "",
+      "image": "https://www.rawblend.com.au/wp-content/uploads/2021/06/Creamy-Tomato-Soup-1920x1080-1.jpg",
     },
     {
       "productId": 1011,
