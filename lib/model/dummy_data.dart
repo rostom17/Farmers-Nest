@@ -98,7 +98,7 @@ class ProductData {
       "ratings": 4.4,
       "available": true,
       "stockAmount": 60,
-      "image": "",
+      "image": "https://media.istockphoto.com/id/1143163513/photo/fresh-organic-red-ripe-strawberry-fruit-background-closeup.jpg?s=612x612&w=0&k=20&c=2zga2WiDUpQSpQ4wpZYyeBXTlWe3aSm1D679rO0FBPg=",
     },
     {
       "productId": 1007,
