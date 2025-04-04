@@ -178,7 +178,7 @@ class ProductData {
       "ratings": 4.5,
       "available": true,
       "stockAmount": 55,
-      "image": "",
+      "image": "https://media.istockphoto.com/id/915331918/photo/broccoli-in-an-old-metal-colander.jpg?s=612x612&w=0&k=20&c=5Bm0dL_Xth6Jvx97CC0zZ5_8PLQlNThpuOaesk_Ex9Y=",
     },
     {
       "productId": 1012,
