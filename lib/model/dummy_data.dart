@@ -81,7 +81,8 @@ class ProductData {
       "ratings": 4.8,
       "available": true,
       "stockAmount": 30,
-      "image": "",
+      "image":
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkxvQ-oDutafNImCAxnn1j1WWxosv0SzeHeg&s",
     },
     {
       "productId": 1006,
