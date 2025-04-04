@@ -42,10 +42,23 @@ class FarmersNest extends StatelessWidget {
         overlayColor: WidgetStatePropertyAll(ColorPallet.mainColorTheme),
         elevation: 5,
         labelTextStyle: WidgetStatePropertyAll(TextStyle(color: Colors.black)),
-        height: 70,
         indicatorShape: OutlineInputBorder(
           borderSide: BorderSide(width: 3, color: ColorPallet.mainColorTheme),
           borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: ColorPallet.mainColorTheme,
+        ),
+      ),
+
+      textTheme: TextTheme(
+        titleLarge: TextStyle(
+          fontSize: 26,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
         ),
       ),
     );
