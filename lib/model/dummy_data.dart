@@ -114,7 +114,7 @@ class ProductData {
       "ratings": 4.2,
       "available": true,
       "stockAmount": 200,
-      "image": "",
+      "image": "https://media.istockphoto.com/id/454273399/photo/pouring-water-from-bottle-into-glass-on-blue-background.jpg?s=612x612&w=0&k=20&c=0SLUO53_48thzcpFVLrEiF9Yb8jTbKmO0acUpWsC3yg=",
     },
     {
       "productId": 1008,
@@ -130,7 +130,7 @@ class ProductData {
       "ratings": 4.0,
       "available": true,
       "stockAmount": 80,
-      "image": "",
+      "image": "https://m.media-amazon.com/images/I/514xVUdk6ML._AC_UF1000,1000_QL80_.jpg",
     },
     {
       "productId": 1009,
