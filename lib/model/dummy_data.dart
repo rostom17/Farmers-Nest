@@ -274,7 +274,7 @@ class ProductData {
       "ratings": 4.5,
       "available": true,
       "stockAmount": 40,
-      "image": "",
+      "image": "https://images.unsplash.com/photo-1600271886742-f049cd451bba?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b3JhbmdlJTIwanVpY2V8ZW58MHx8MHx8fDA%3D",
     },
     {
       "productId": 1018,
@@ -290,7 +290,7 @@ class ProductData {
       "ratings": 4.6,
       "available": true,
       "stockAmount": 30,
-      "image": "",
+      "image": "https://hungryherd.ca/cdn/shop/products/ground_beef.jpg?v=1621390126",
     },
     {
       "productId": 1019,
@@ -306,7 +306,7 @@ class ProductData {
       "ratings": 4.2,
       "available": true,
       "stockAmount": 120,
-      "image": "",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrXjohW4CcF-B-kkFPmk3meMDJRBauJ6BoAg&s",
     },
     {
       "productId": 1020,
@@ -322,7 +322,7 @@ class ProductData {
       "ratings": 4.3,
       "available": true,
       "stockAmount": 80,
-      "image": "",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkrHWqU_a1VumxqfE0a2nxFP03q-LSZ8Aqtw&s",
     },
     {
       "productId": 1021,
@@ -338,7 +338,7 @@ class ProductData {
       "ratings": 4.4,
       "available": true,
       "stockAmount": 45,
-      "image": "",
+      "image": "https://www.shutterstock.com/image-photo/background-fresh-green-spinach-leaves-260nw-2491123299.jpg",
     },
     {
       "productId": 1022,
