@@ -3,7 +3,7 @@ import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:farmers_nest/view/bottom_nav_screen.dart';
+import 'package:farmers_nest/view/screens/bottom_nav_screen.dart';
 
 class FarmersNest extends StatelessWidget {
   const FarmersNest({super.key});

@@ -1,7 +1,7 @@
-import 'package:farmers_nest/view/cart_screen.dart';
-import 'package:farmers_nest/view/home_screen.dart';
-import 'package:farmers_nest/view/profile_screen.dart';
-import 'package:farmers_nest/view/category_screen.dart';
+import 'package:farmers_nest/view/screens/cart_screen.dart';
+import 'package:farmers_nest/view/screens/home_screen.dart';
+import 'package:farmers_nest/view/screens/profile_screen.dart';
+import 'package:farmers_nest/view/screens/category_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

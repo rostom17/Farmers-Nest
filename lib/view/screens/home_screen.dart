@@ -1,5 +1,6 @@
 import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:farmers_nest/model/dummy_data.dart';
+import 'package:farmers_nest/view/widgets/product_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -37,42 +38,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   TextButton(onPressed: () {}, child: Text("See All")),
                 ],
               ),
-              SizedBox(
-                height: 250,
-                width: double.maxFinite,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder:
-                      (context, index) => Container(
-                        width: 150,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.red,
-                        ),
-                        padding: EdgeInsets.all(8),
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.network(
-                                ProductData.productData[index]["image"],
-                                colorBlendMode: BlendMode.clear,
-                                errorBuilder:
-                                    (context, error, stackTrace) =>
-                                        Center(child: Icon(Icons.broken_image)),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                  separatorBuilder: (context, index) => SizedBox(width: 10),
-                  itemCount: ProductData.productData.length,
-                ),
-              ),
+              _buildProductCard(),
               Text("he  "),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox _buildProductCard() {
+    return SizedBox(
+      height: 250,
+      width: double.maxFinite,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemBuilder:
+            (context, index) =>
+                ProductCard(product: ProductData.productData[index]),
+        separatorBuilder: (context, index) => SizedBox(width: 10),
+        itemCount: ProductData.productData.length,
       ),
     );
   }
