@@ -28,22 +28,39 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               _buildSlider(),
               const SizedBox(height: 16),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Best Selling",
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  TextButton(onPressed: () {}, child: Text("See All")),
-                ],
+              _buildEachSection(
+                context: context,
+                sectionName: "Best Selling",
+                buttonName: "See All",
               ),
+              const SizedBox(height: 16),
               _buildProductCard(),
-              Text("he  "),
+              const SizedBox(height: 16),
+              _buildEachSection(
+                context: context,
+                sectionName: "New Arrival",
+                buttonName: "See All",
+              ),
+              const SizedBox(height: 16),
+              _buildProductCard(),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Row _buildEachSection({
+    required BuildContext context,
+    required String sectionName,
+    required String buttonName,
+  }) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(sectionName, style: Theme.of(context).textTheme.titleLarge),
+        TextButton(onPressed: () {}, child: Text(buttonName)),
+      ],
     );
   }
 

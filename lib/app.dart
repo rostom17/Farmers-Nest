@@ -60,6 +60,10 @@ class FarmersNest extends StatelessWidget {
           fontWeight: FontWeight.w600,
           color: Colors.black,
         ),
+
+        bodyLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+        bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        bodySmall: TextStyle(fontSize: 14, color: Colors.grey.shade800),
       ),
     );
   }
