@@ -1,9 +1,10 @@
-import 'package:farmers_nest/core/color_pallet.dart';
-import 'package:farmers_nest/model/dummy_data.dart';
-import 'package:farmers_nest/view/widgets/product_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import 'package:farmers_nest/model/dummy_data.dart';
+import 'package:farmers_nest/view/widgets/home_screen_slider.dart';
+import 'package:farmers_nest/view/widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               _buildSearchBar(),
               const SizedBox(height: 16),
-              _buildSlider(),
+              HomePageSlider(),
               const SizedBox(height: 16),
               _buildEachSection(
                 context: context,
@@ -107,17 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       hintText: "Search for products",
       trailing: [Icon(CupertinoIcons.camera), const SizedBox(width: 16)],
-    );
-  }
-
-  Container _buildSlider() {
-    return Container(
-      height: 120,
-      width: double.maxFinite,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: ColorPallet.sliderColor,
-      ),
     );
   }
 }

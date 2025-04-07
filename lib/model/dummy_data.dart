@@ -1,4 +1,28 @@
 class ProductData {
+  static const List<Map<String, dynamic>> sliderData = [
+    {
+      "sliderId": 901,
+      "sliderName": "Vegitable",
+      "message": "From Our Garden",
+      "image":
+          "https://media.istockphoto.com/id/1403036306/photo/wide-horizontal-seamless-pattern-of-vegetables-and-fruits-on-green.jpg?s=612x612&w=0&k=20&c=guEffnjHdPMN0Gm9T9ikixAozv42_5521WH5CpCh84Y=",
+    },
+    {
+      "sliderId": 902,
+      "sliderName": "Tomato",
+      "message": "Farmers Vagitable",
+      "image":
+          "https://cdn.prod.website-files.com/62297f6fa9b6c86667bb54eb/6291b72916f0c71a5873894d_hero-image-2.jpg",
+    },
+    {
+      "sliderId": 903,
+      "sliderName": "Vegitable2",
+      "message": "Happy Farmer",
+      "image":
+          "https://www.shutterstock.com/image-photo/smiling-woman-farmer-just-harvested-260nw-2416160553.jpg",
+    },
+  ];
+
   static const List<Map<String, dynamic>> productData = [
     {
       "productId": 1001,
