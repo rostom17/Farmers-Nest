@@ -8,15 +8,9 @@ class ProductCard extends StatelessWidget {
 
   final Map<String, dynamic> product;
 
-  void onTapProduct() {
-    //MaterialPageRoute(builder: (context, index))
-  }
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      borderRadius: BorderRadius.circular(16),
-      splashColor: ColorPallet.backGroundColor2,
       onTap: () {
         Get.to(() => ProductScreen());
       },
@@ -76,6 +70,7 @@ class ProductCard extends StatelessWidget {
         height: 40,
         width: 40,
         child: FloatingActionButton(
+          heroTag: UniqueKey(),
           elevation: 0,
           backgroundColor: ColorPallet.mainColorTheme,
           foregroundColor: Colors.white,
@@ -105,14 +100,17 @@ class ProductCard extends StatelessWidget {
       height: 120,
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
-        child: Image.network(
-          product["image"],
-          fit: BoxFit.cover,
-          colorBlendMode: BlendMode.clear,
-          errorBuilder:
-              (context, error, stackTrace) =>
-                  Center(child: Icon(Icons.broken_image)),
-        ),
+        child:
+            product['image'] != ""
+                ? Image.network(
+                  product["image"],
+                  fit: BoxFit.cover,
+                  colorBlendMode: BlendMode.clear,
+                  errorBuilder:
+                      (context, error, stackTrace) =>
+                          Center(child: Icon(Icons.broken_image)),
+                )
+                : Center(child: Icon(Icons.broken_image)),
       ),
     );
   }
