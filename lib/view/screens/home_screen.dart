@@ -1,3 +1,4 @@
+import 'package:farmers_nest/view/screens/product_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:farmers_nest/model/dummy_data.dart';
 import 'package:farmers_nest/view/widgets/home_screen_slider.dart';
 import 'package:farmers_nest/view/widgets/product_card.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

@@ -1,17 +1,25 @@
 import 'package:farmers_nest/core/color_pallet.dart';
+import 'package:farmers_nest/view/screens/product_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({required this.product, super.key});
 
   final Map<String, dynamic> product;
 
+  void onTapProduct() {
+    //MaterialPageRoute(builder: (context, index))
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(16),
       splashColor: ColorPallet.backGroundColor2,
-      onTap: () {},
+      onTap: () {
+        Get.to(() => ProductScreen());
+      },
       child: Container(
         width: 150,
         decoration: BoxDecoration(

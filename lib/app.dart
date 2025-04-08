@@ -1,5 +1,6 @@
 import 'package:farmers_nest/binder.dart';
 import 'package:farmers_nest/core/color_pallet.dart';
+import 'package:farmers_nest/view/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,10 @@ class FarmersNest extends StatelessWidget {
       theme: _lightTheme(),
       initialBinding: Binder(),
       initialRoute: "/",
-      getPages: [GetPage(name: "/", page: () => BottomNavigationScreen())],
+      getPages: [
+        GetPage(name: "/", page: () => BottomNavigationScreen()),
+        GetPage(name: "/productScreen", page: () => ProductScreen()),
+      ],
     );
   }
 
