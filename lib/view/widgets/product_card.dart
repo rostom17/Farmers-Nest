@@ -1,5 +1,4 @@
 import 'package:farmers_nest/core/color_pallet.dart';
-import 'package:farmers_nest/view/screens/product_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,12 +7,14 @@ class ProductCard extends StatelessWidget {
 
   final Map<String, dynamic> product;
 
+  void goToProductScreen() {
+    Get.toNamed("/productScreen", arguments: product);
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Get.to(() => ProductScreen());
-      },
+      onTap: goToProductScreen,
       child: Container(
         width: 150,
         decoration: BoxDecoration(
