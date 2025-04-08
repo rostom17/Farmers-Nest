@@ -39,7 +39,7 @@ class FarmersNest extends StatelessWidget {
       ),
 
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.surfaceTintColor,
         surfaceTintColor: ColorPallet.mainColorTheme,
         indicatorColor: Colors.transparent,
         iconTheme: WidgetStatePropertyAll(IconThemeData(color: Colors.black)),
