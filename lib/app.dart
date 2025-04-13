@@ -54,6 +54,15 @@ class FarmersNest extends StatelessWidget {
         ),
       ),
 
+      cardTheme: CardTheme(color: ColorPallet.productColor2),
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: ColorPallet.mainColorTheme,
+          foregroundColor: Colors.white,
+        ),
+      ),
+
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: ColorPallet.mainColorTheme,
@@ -61,6 +70,11 @@ class FarmersNest extends StatelessWidget {
       ),
 
       textTheme: TextTheme(
+        headlineSmall: TextStyle(
+          fontSize: 30,
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+        ),
         titleLarge: TextStyle(
           fontSize: 26,
           fontWeight: FontWeight.w600,

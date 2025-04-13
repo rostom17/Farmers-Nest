@@ -1,3 +1,4 @@
+import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:farmers_nest/model/dummy_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,13 +30,13 @@ class _ProductScreenState extends State<ProductScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _foodNameSection(context),
+                  _productTitleSection(context),
                   _ratingFavouriteSection(),
                   const SizedBox(height: 10),
-                  const Text("."),
+                  Text("${widget.productDetails['description']}"),
                   const SizedBox(height: 20),
                   Text(
-                    "Similar Category Food",
+                    "Similar Category Product",
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                   const SizedBox(height: 20),
@@ -45,6 +46,15 @@ class _ProductScreenState extends State<ProductScreen> {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(
+          top: 12,
+          left: 20,
+          right: 20,
+          bottom: 20,
+        ),
+        child: ElevatedButton(onPressed: () {}, child: Text("Add to Cart")),
       ),
     );
   }
@@ -83,18 +93,18 @@ class _ProductScreenState extends State<ProductScreen> {
     );
   }
 
-  Row _foodNameSection(BuildContext context) {
+  Row _productTitleSection(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           "${widget.productDetails['productName']}",
-          style: Theme.of(context).textTheme.titleLarge,
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
         Text(
           '\$${widget.productDetails['price']}',
           style: TextStyle(
-            color: Colors.greenAccent,
+            color: ColorPallet.mainColorTheme,
             fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
@@ -174,7 +184,7 @@ class _ProductScreenState extends State<ProductScreen> {
               ),
               Text(
                 "${ProductData.productData[index]['productName']}",
-                style: Theme.of(context).textTheme.titleSmall,
+                style: Theme.of(context).textTheme.bodyLarge,
               ),
               Row(
                 children: [
@@ -188,7 +198,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 style: const TextStyle(
                   color: Colors.greenAccent,
                   fontWeight: FontWeight.bold,
-                  fontSize: 16,
+                  fontSize: 26,
                 ),
               ),
             ],

@@ -1,3 +1,4 @@
+import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:farmers_nest/model/dummy_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -121,62 +122,69 @@ class ProfileScreen extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Card(
-                margin: const EdgeInsets.all(12),
                 child: SizedBox(
                   height: 120,
-                  child: Row(
-                    children: [
-                      const SizedBox(width: 10),
-                      SizedBox(
-                        height: 110,
-                        width: 110,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16),
-                          child:
-                              item['image'] != ""
-                                  ? Image.network(
-                                    item['image'],
-                                    fit: BoxFit.cover,
-                                  )
-                                  : Center(child: Icon(Icons.broken_image)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          height: 110,
+                          width: 110,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child:
+                                item['image'] != ""
+                                    ? Image.network(
+                                      item['image'],
+                                      fit: BoxFit.cover,
+                                      colorBlendMode: BlendMode.clear,
+                                    )
+                                    : Center(child: Icon(Icons.broken_image)),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      SizedBox(
-                        width: 190,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              item['productName'].toString(),
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            Text("${item['description']}"),
-                            Text(
-                              "\$ ${item['price']}",
-                              style: const TextStyle(
-                                color: Colors.greenAccent,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
+                        const SizedBox(width: 10),
+                        SizedBox(
+                          width: 190,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                item['productName'].toString(),
+                                style: Theme.of(context).textTheme.bodyMedium,
                               ),
+
+                              Text(
+                                "${item['description']}",
+                                style: Theme.of(context).textTheme.bodySmall,
+                              ),
+                              Text(
+                                "\$ ${item['price']}",
+                                style: const TextStyle(
+                                  color: ColorPallet.mainColorTheme,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const Spacer(),
+                        Column(
+                          children: [
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.shopping_cart_checkout),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.delete),
                             ),
                           ],
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      Column(
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.shopping_cart_checkout),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.delete),
-                          ),
-                        ],
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
