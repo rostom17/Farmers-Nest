@@ -1,21 +1,32 @@
 import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:farmers_nest/model/dummy_data.dart';
+import 'package:farmers_nest/viewmodel/add_to_cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProductScreen extends StatefulWidget {
-  ProductScreen({super.key});
+  const ProductScreen({required this.productDetails, super.key});
 
-  Map<String, dynamic> productDetails = Get.arguments;
+  final Map<String, dynamic> productDetails;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  void _onTapItem() {
-    Get.toNamed("/productScreen", arguments: widget.productDetails);
+  final _addtoCartController = AddToCartController();
+  void _onTapItem() {}
+
+  @override
+  void initState() {
+    print("\nrostom\n${widget.productDetails["image"]}");
+    super.initState();
+  }
+
+  void addToCart() {
+    _addtoCartController.addToCart(widget.productDetails, 1);
   }
 
   @override
@@ -54,7 +65,7 @@ class _ProductScreenState extends State<ProductScreen> {
           right: 20,
           bottom: 20,
         ),
-        child: ElevatedButton(onPressed: () {}, child: Text("Add to Cart")),
+        child: ElevatedButton(onPressed: addToCart, child: Text("Add to Cart")),
       ),
     );
   }
@@ -64,9 +75,11 @@ class _ProductScreenState extends State<ProductScreen> {
       expandedHeight: 350,
       pinned: true,
       flexibleSpace: FlexibleSpaceBar(
-        background: Image.network(
-          '${widget.productDetails['image']}',
+        background: CachedNetworkImage(
+          imageUrl: '${widget.productDetails['image']}',
           fit: BoxFit.cover,
+          errorWidget:
+              (context, url, error) => Center(child: Icon(Icons.broken_image)),
         ),
       ),
       bottom: PreferredSize(
@@ -98,7 +111,7 @@ class _ProductScreenState extends State<ProductScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "${widget.productDetails['productName']}",
+          "${widget.productDetails['product_name']}",
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         Text(

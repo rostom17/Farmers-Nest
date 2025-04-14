@@ -23,7 +23,6 @@ class FarmersNest extends StatelessWidget {
           FirebaseAuth.instance.currentUser != null ? "/" : "/loginScreen",
       getPages: [
         GetPage(name: "/", page: () => BottomNavigationScreen()),
-        GetPage(name: "/productScreen", page: () => ProductScreen()),
         GetPage(name: "/userProfile", page: () => UserProfileScreen()),
         GetPage(name: "/loginScreen", page: () => LoginScreen()),
         GetPage(name: "/registrationScreen", page: () => RegistrationScreen()),
