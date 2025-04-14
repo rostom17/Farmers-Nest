@@ -18,7 +18,7 @@ class FarmersNest extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: _lightTheme(),
       initialBinding: Binder(),
-      initialRoute: "/registrationScreen",
+      initialRoute: "/",
       getPages: [
         GetPage(name: "/", page: () => BottomNavigationScreen()),
         GetPage(name: "/productScreen", page: () => ProductScreen()),
