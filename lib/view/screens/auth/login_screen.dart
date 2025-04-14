@@ -35,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Column(
             children: [
               SizedBox(height: screenHeight * .2),
-              Text("Login", style: Theme.of(context).textTheme.displayMedium),
+              Text("Login", style: Theme.of(context).textTheme.headlineMedium),
               const SizedBox(height: 32),
               _buildLoginField("Email", _emailTEC),
               const SizedBox(height: 20),

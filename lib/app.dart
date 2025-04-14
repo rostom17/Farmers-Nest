@@ -18,7 +18,7 @@ class FarmersNest extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: _lightTheme(),
       initialBinding: Binder(),
-      initialRoute: "/loginScreen",
+      initialRoute: "/registrationScreen",
       getPages: [
         GetPage(name: "/", page: () => BottomNavigationScreen()),
         GetPage(name: "/productScreen", page: () => ProductScreen()),
@@ -70,10 +70,7 @@ class FarmersNest extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          textStyle: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-          ),
+          textStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
       ),
 
@@ -84,6 +81,11 @@ class FarmersNest extends StatelessWidget {
       ),
 
       textTheme: TextTheme(
+        headlineMedium: TextStyle(
+          fontSize: 36,
+          fontWeight: FontWeight.w800,
+          color: Colors.black,
+        ),
         headlineSmall: TextStyle(
           fontSize: 30,
           fontWeight: FontWeight.w600,

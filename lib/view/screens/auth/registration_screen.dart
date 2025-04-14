@@ -38,7 +38,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: Column(
               children: [
                 SizedBox(height: screenHeight * .2),
-                Text("Login", style: Theme.of(context).textTheme.displayMedium),
+                Text("Registration", style: Theme.of(context).textTheme.headlineMedium),
                 const SizedBox(height: 32),
                 _buildLoginField("Name", _nameTEC),
                 const SizedBox(height: 20),
