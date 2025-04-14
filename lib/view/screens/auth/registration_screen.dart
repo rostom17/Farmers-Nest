@@ -1,3 +1,4 @@
+import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
@@ -11,9 +12,9 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController _emailTEC = TextEditingController();
   final TextEditingController _passwordTEC = TextEditingController();
-   final TextEditingController _nameTEC = TextEditingController();
-    final TextEditingController _phoneNumber = TextEditingController();
-     final TextEditingController _address = TextEditingController();
+  final TextEditingController _nameTEC = TextEditingController();
+  final TextEditingController _phoneNumber = TextEditingController();
+  final TextEditingController _address = TextEditingController();
   final GlobalKey _formKey = GlobalKey<FormState>();
 
   bool _showPass = false;
@@ -29,57 +30,58 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(left: 16, right: 16, top: 12),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              SizedBox(height: screenHeight * .2),
-              Text("Login", style: Theme.of(context).textTheme.displayMedium),
-              const SizedBox(height: 32),
-              _buildLoginField("Name", _nameTEC),
-              const SizedBox(height: 20),
-              _buildLoginField("Phone Number", _phoneNumber),
-              const SizedBox(height: 20),
-              _buildLoginField("Address", _address),
-              const SizedBox(height: 20),
-              _buildLoginField("Email", _emailTEC),
-              const SizedBox(height: 20),
-              _buildLoginField("Password", _passwordTEC),
-              const SizedBox(height: 32),
-              ElevatedButton(onPressed: () {}, child: Text("Register")),
-              const SizedBox(height: 32),
-              _buildDivider(context),
-              
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Already Have account?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Loin",
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16),
-            ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(left: 16, right: 16, top: 12),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                SizedBox(height: screenHeight * .2),
+                Text("Login", style: Theme.of(context).textTheme.displayMedium),
+                const SizedBox(height: 32),
+                _buildLoginField("Name", _nameTEC),
+                const SizedBox(height: 20),
+                _buildLoginField("Phone Number", _phoneNumber),
+                const SizedBox(height: 20),
+                _buildLoginField("Address", _address),
+                const SizedBox(height: 20),
+                _buildLoginField("Email", _emailTEC),
+                const SizedBox(height: 20),
+                _buildLoginField("Password", _passwordTEC),
+                const SizedBox(height: 32),
+                ElevatedButton(onPressed: () {}, child: Text("Register")),
+                const SizedBox(height: 32),
+                _buildDivider(context),
+              ],
+            ),
           ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Already Have account?",
+              style: TextStyle(
+                color: Colors.black,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text(
+                "Login",
+                style: TextStyle(color: ColorPallet.mainColorTheme),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
-
 
   Row _buildDivider(BuildContext context) {
     return Row(
@@ -95,15 +97,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return TextFormField(
       decoration: InputDecoration(
         label: Text(label),
-        suffixIcon:
-            label == "Password"
-                ? IconButton(
-                  onPressed: _toggleShowPass,
-                  icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
-                )
-                : null,
+        suffixIcon: label == "Password"
+            ? IconButton(
+                onPressed: _toggleShowPass,
+                icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
+              )
+            : null,
       ),
-
       obscureText: label == "Password" && !_showPass ? true : false,
       controller: controller,
       validator: (String? value) {

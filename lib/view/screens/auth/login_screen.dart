@@ -1,3 +1,4 @@
+import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -45,29 +46,28 @@ class _LoginScreenState extends State<LoginScreen> {
               _buildDivider(context),
               const SizedBox(height: 32),
               _buildSignInWithGoogleButton(),
-              const Spacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Didn't Have Account?",
-                    style: TextStyle(
-                      color: Colors.black,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Register",
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  ),
-                ],
-              ),
               const SizedBox(height: 16),
             ],
           ),
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(bottom: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              "Don't have an account?",
+              style: TextStyle(
+                color: Colors.black,
+                decoration: TextDecoration.underline,
+              ),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: Text("Register",style: TextStyle(color: ColorPallet.mainColorTheme),),
+            ),
+          ],
         ),
       ),
     );
@@ -101,15 +101,13 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextFormField(
       decoration: InputDecoration(
         label: Text(label),
-        suffixIcon:
-            label == "Password"
-                ? IconButton(
-                  onPressed: _toggleShowPass,
-                  icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
-                )
-                : null,
+        suffixIcon: label == "Password"
+            ? IconButton(
+                onPressed: _toggleShowPass,
+                icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
+              )
+            : null,
       ),
-
       obscureText: label == "Password" && !_showPass ? true : false,
       controller: controller,
       validator: (String? value) {
