@@ -1,6 +1,7 @@
 import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:farmers_nest/model/dummy_data.dart';
-import 'package:farmers_nest/viewmodel/add_to_cart_controller.dart';
+import 'package:farmers_nest/viewmodel/cart_controller.dart';
+import 'package:farmers_nest/viewmodel/favourite_item_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -16,17 +17,15 @@ class ProductScreen extends StatefulWidget {
 }
 
 class _ProductScreenState extends State<ProductScreen> {
-  final _addtoCartController = AddToCartController();
-  void _onTapItem() {}
-
-  @override
-  void initState() {
-    print("\nrostom\n${widget.productDetails["image"]}");
-    super.initState();
-  }
+  final _addtoCartController = CartController();
+  final _favouriteItemController = FavouriteItemController();
 
   void addToCart() {
     _addtoCartController.addToCart(widget.productDetails, 1);
+  }
+
+  void addtoFavourite() {
+    _favouriteItemController.addToFavourite(widget.productDetails);
   }
 
   @override
@@ -144,7 +143,7 @@ class _ProductScreenState extends State<ProductScreen> {
         SizedBox(
           width: 50,
           child: IconButton(
-            onPressed: () {},
+            onPressed: addtoFavourite,
             icon: const Icon(CupertinoIcons.heart, color: Colors.red),
           ),
         ),
@@ -172,7 +171,7 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget _itemBuilder(BuildContext context, int index) {
     return InkWell(
       borderRadius: BorderRadius.circular(16),
-      onTap: _onTapItem,
+      onTap: () {},
       child: SizedBox(
         child: Padding(
           padding: const EdgeInsets.all(8.0),

@@ -1,5 +1,6 @@
 import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:farmers_nest/view/screens/product_screen.dart';
+import 'package:farmers_nest/viewmodel/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,8 +14,17 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
+  final _cartController = CartController();
+
   void goToProductScreen() {
     Get.to(() => ProductScreen(productDetails: widget.product));
+  }
+
+  void _addToCart() {
+    _cartController.addToCart(widget.product, 1);
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text("Product Added To Your Cart")));
   }
 
   @override
@@ -86,7 +96,7 @@ class _ProductCardState extends State<ProductCard> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(14),
           ),
-          onPressed: () {},
+          onPressed: _addToCart,
           child: Icon(Icons.add),
         ),
       ),

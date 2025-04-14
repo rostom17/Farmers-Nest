@@ -1,13 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class AddToCartController {
-  final user = FirebaseAuth.instance.currentUser;
-
+class CartController {
   Future<void> addToCart(
     Map<String, dynamic> productDetails,
     int itemCount,
   ) async {
+    final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
       throw Exception("User not found");
     }
@@ -22,5 +21,20 @@ class AddToCartController {
       'image': productDetails['image'],
       'quantity': itemCount,
     });
+  }
+
+  Future<List<Map<String, dynamic>>> fetchCartItems() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      throw Exception("No user credential");
+    }
+    final data =
+        await FirebaseFirestore.instance
+            .collection('Carts')
+            .doc("${user?.uid}")
+            .collection('items')
+            .get();
+    var list = data.docs.map((doc) => doc.data()).toList();
+    return list;
   }
 }
