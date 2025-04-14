@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:farmers_nest/model/dummy_data.dart';
 import 'package:farmers_nest/view/widgets/home_screen_slider.dart';
 import 'package:farmers_nest/view/widgets/product_card.dart';
 
@@ -86,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 (context, index) =>
                     ProductCard(product: snapshot.data!.docs[index].data()),
             separatorBuilder: (context, index) => SizedBox(width: 10),
-            itemCount: ProductData.productData.length,
+            itemCount: snapshot.data!.docs.length,
           );
         },
       ),

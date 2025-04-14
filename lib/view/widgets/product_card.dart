@@ -17,12 +17,6 @@ class _ProductCardState extends State<ProductCard> {
   }
 
   @override
-  void initState() {
-    print(widget.product);
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: goToProductScreen,
@@ -36,7 +30,7 @@ class _ProductCardState extends State<ProductCard> {
         child: Stack(
           children: [
             _buildImage(),
-            widget.product['discount'] > 0
+            widget.product['discount'] != null && widget.product['discount'] > 0
                 ? _buildDiscount(widget.product['discount'])
                 : Text(""),
 
@@ -102,7 +96,7 @@ class _ProductCardState extends State<ProductCard> {
     return Positioned(
       top: 2,
       left: 5,
-      child: Text("${discount}% off", style: TextStyle(color: Colors.pink)),
+      child: Text("$discount% off", style: TextStyle(color: Colors.pink)),
     );
   }
 
