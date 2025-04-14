@@ -1,4 +1,5 @@
 import 'package:farmers_nest/core/color_pallet.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -14,7 +15,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
   final TextEditingController _emailTEC = TextEditingController();
   final TextEditingController _passwordTEC = TextEditingController();
   final TextEditingController _nameTEC = TextEditingController();
-  final TextEditingController _phoneNumber = TextEditingController();
+  final TextEditingController _photoURL = TextEditingController();
   final TextEditingController _address = TextEditingController();
   final GlobalKey _formKey = GlobalKey<FormState>();
 
@@ -24,6 +25,38 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     setState(() {
       _showPass = !_showPass;
     });
+  }
+
+  Future<void> registration() async {
+    try {
+      var userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+            email: _emailTEC.text.trim(),
+            password: _passwordTEC.text,
+          );
+      if (userCredential.user?.uid != null) {
+        FirebaseAuth.instance.currentUser?.updateDisplayName(
+          _nameTEC.text.trim(),
+        );
+        FirebaseAuth.instance.currentUser?.updatePhotoURL(_photoURL.text);
+        Get.offAllNamed('/');
+      }
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("${e.message}")));
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailTEC.dispose();
+    _passwordTEC.dispose();
+    _nameTEC.dispose();
+    _photoURL.dispose();
+    _address.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -46,7 +79,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 const SizedBox(height: 32),
                 _buildLoginField("Name", _nameTEC),
                 const SizedBox(height: 20),
-                _buildLoginField("Phone Number", _phoneNumber),
+                _buildLoginField("Phone Number", _photoURL),
                 const SizedBox(height: 20),
                 _buildLoginField("Address", _address),
                 const SizedBox(height: 20),
@@ -54,7 +87,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 const SizedBox(height: 20),
                 _buildLoginField("Password", _passwordTEC),
                 const SizedBox(height: 32),
-                ElevatedButton(onPressed: () {}, child: Text("Register")),
+                ElevatedButton(
+                  onPressed: registration,
+                  child: Text("Register"),
+                ),
                 const SizedBox(height: 32),
                 _buildDivider(context),
               ],

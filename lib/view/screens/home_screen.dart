@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:farmers_nest/view/widgets/home_screen_slider.dart';
 import 'package:farmers_nest/view/widgets/product_card.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,6 +16,17 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  Future<void> logOut() async {
+    try {
+      FirebaseAuth.instance.signOut();
+      Get.offAllNamed("/loginScreen");
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("${e.message}")));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -149,9 +162,20 @@ class _HomeScreenState extends State<HomeScreen> {
       title: Text("FARMERS NEST"),
       centerTitle: false,
       actions: [
-        Icon(CupertinoIcons.bell),
+        Badge(
+          backgroundColor: Colors.pink,
+          label: Text("2", style: TextStyle(color: Colors.white)),
+          child: Icon(CupertinoIcons.bell, size: 32, color: Colors.black),
+        ),
         const SizedBox(width: 12),
-        Icon(CupertinoIcons.list_bullet),
+        IconButton(
+          onPressed: logOut,
+          icon: Icon(
+            CupertinoIcons.square_arrow_right,
+            size: 32,
+            color: Colors.black,
+          ),
+        ),
         const SizedBox(width: 12),
       ],
     );
