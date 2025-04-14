@@ -23,7 +23,6 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               _bottomNavigationController.screens[_bottomNavigationController
                   .selectedIndex],
           bottomNavigationBar: Padding(
-            // padding: const EdgeInsets.only(top: 8),
             padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(25),

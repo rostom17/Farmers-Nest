@@ -2,13 +2,24 @@ import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({required this.product, super.key});
 
   final Map<String, dynamic> product;
 
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
   void goToProductScreen() {
-    Get.toNamed("/productScreen", arguments: product);
+    Get.toNamed("/productScreen", arguments: widget.product);
+  }
+
+  @override
+  void initState() {
+    print(widget.product);
+    super.initState();
   }
 
   @override
@@ -25,14 +36,16 @@ class ProductCard extends StatelessWidget {
         child: Stack(
           children: [
             _buildImage(),
-            product['discount'] > 0 ? _buildDiscount() : Text(""),
+            widget.product['discount'] > 0
+                ? _buildDiscount(widget.product['discount'])
+                : Text(""),
 
             _buildProductName(context),
             _buildProductUnit(context),
             Positioned(
               bottom: 10,
               child: Text(
-                "\$${product['price']}",
+                "\$${widget.product['price']}",
                 style: Theme.of(context).textTheme.bodyMedium,
               ),
             ),
@@ -47,7 +60,7 @@ class ProductCard extends StatelessWidget {
     return Positioned(
       top: 155,
       child: Text(
-        "${product['quantity']} ${product['quantity_unit']}",
+        "${widget.product['quantity']} ${widget.product['quantity_unit']}",
         style: Theme.of(context).textTheme.bodySmall,
       ),
     );
@@ -57,7 +70,7 @@ class ProductCard extends StatelessWidget {
     return Positioned(
       top: 130,
       child: Text(
-        "${product['productName']}",
+        "${widget.product['product_name']}",
         style: Theme.of(context).textTheme.bodyMedium,
       ),
     );
@@ -85,14 +98,11 @@ class ProductCard extends StatelessWidget {
     );
   }
 
-  Positioned _buildDiscount() {
+  Positioned _buildDiscount(int discount) {
     return Positioned(
       top: 2,
       left: 5,
-      child: Text(
-        "${(product['discount'] * 100).toInt()}% off",
-        style: TextStyle(color: Colors.pink),
-      ),
+      child: Text("${discount}% off", style: TextStyle(color: Colors.pink)),
     );
   }
 
@@ -102,9 +112,9 @@ class ProductCard extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child:
-            product['image'] != ""
+            widget.product['image'] != null
                 ? Image.network(
-                  product["image"],
+                  widget.product["image"],
                   fit: BoxFit.cover,
                   colorBlendMode: BlendMode.clear,
                   errorBuilder:
