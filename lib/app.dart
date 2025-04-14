@@ -64,6 +64,16 @@ class FarmersNest extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: ColorPallet.mainColorTheme,
           foregroundColor: Colors.white,
+          fixedSize: Size.fromWidth(double.maxFinite),
+          shadowColor: Colors.grey,
+          elevation: 3,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          textStyle: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
 
