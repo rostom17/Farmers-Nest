@@ -89,6 +89,18 @@ class FarmersNest extends StatelessWidget {
         bodyMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         bodySmall: TextStyle(fontSize: 14, color: Colors.grey.shade800),
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black),
+          borderRadius: BorderRadius.circular(12),
+        ),
+
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.blue, width: 3),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        labelStyle: TextStyle(color: Colors.black),
+      ),
     );
   }
 }
