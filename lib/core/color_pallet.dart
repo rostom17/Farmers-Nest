@@ -8,4 +8,5 @@ class ColorPallet {
   static const Color sliderColor = Color(0xFFF9D7BD);
   static const Color productColor1 = Color(0xFFC3DCB7);
   static const Color productColor2 = Color(0xFFD6E4E8);
+  static const Color offWhileColor = Color(0xFFEDEADE);
 }

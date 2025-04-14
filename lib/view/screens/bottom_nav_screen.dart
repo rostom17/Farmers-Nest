@@ -23,15 +23,17 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
               _bottomNavigationController.screens[_bottomNavigationController
                   .selectedIndex],
           bottomNavigationBar: Padding(
-            padding: const EdgeInsets.only(top: 8),
+            // padding: const EdgeInsets.only(top: 8),
+            padding: EdgeInsets.only(top: 5, left: 10, right: 10, bottom: 5),
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
-              ),
+              borderRadius: BorderRadius.circular(25),
+
               child: NavigationBar(
                 selectedIndex: _bottomNavigationController.selectedIndex,
                 onDestinationSelected: _bottomNavigationController.onChnage,
+                labelBehavior:
+                    NavigationDestinationLabelBehavior.onlyShowSelected,
+                animationDuration: const Duration(milliseconds: 400),
                 destinations: [
                   NavigationDestination(
                     icon: Icon(CupertinoIcons.home),

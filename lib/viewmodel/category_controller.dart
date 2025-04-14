@@ -5,16 +5,25 @@ class CategoryController extends GetxController {
   CategoryController({this.categoryId = 2001});
 
   int categoryId;
-  List<Map<String, dynamic>> itemByCategory = [];
+  List<Map<String, dynamic>> cateogryList = [];
 
   @override
   void onInit() {
+    cateogryList =
+        ProductData.productData.map((element) {
+          return {
+            "cId": element['category']['cId'],
+            "categoryName": element['category']['categoryName'],
+          };
+        }).toList();
+
+    // final uniqueCategories =
+    //     {for (var item in cateogryList) item['cId']: item}.values.toList();
+    // print(uniqueCategories);
+
     super.onInit();
-    itemByCategory =
-        ProductData.productData
-            .where((item) => item['category']['cId'] == categoryId)
-            .toList();
   }
 
-  List<Map<String,dynamic>> get categoryItem=>  itemByCategory;
+  List<Map<String, dynamic>> get getCategoryList => cateogryList;
 }
+//
