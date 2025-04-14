@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 buttonName: "See All",
               ),
               const SizedBox(height: 16),
-              _buildProductCard(),
+              _buildProductCard(filed: "remark", condition: "Best Selling"),
               const SizedBox(height: 16),
               _buildEachSection(
                 context: context,
@@ -43,8 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 buttonName: "See All",
               ),
               const SizedBox(height: 16),
-              _buildProductCard(),
-              Text("hello World"),
+              _buildProductCard(filed: "remark", condition: "Organic"),
+              const SizedBox(height: 16),
+              _buildEachSection(
+                context: context,
+                sectionName: "Discounted Product",
+                buttonName: "See All",
+              ),
+              const SizedBox(height: 16),
+              _buildDiscountedProduct(),
             ],
           ),
         ),
@@ -66,12 +73,50 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  SizedBox _buildProductCard() {
+  SizedBox _buildProductCard({
+    required String filed,
+    required String condition,
+  }) {
     return SizedBox(
       height: 250,
       width: double.maxFinite,
       child: FutureBuilder(
-        future: FirebaseFirestore.instance.collection("ProductDetails").get(),
+        future:
+            FirebaseFirestore.instance
+                .collection("ProductDetails")
+                .where(filed, isEqualTo: condition)
+                .get(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (!snapshot.hasData) {
+            return const Center(child: Text("No Data"));
+          }
+          return ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemBuilder:
+                (context, index) =>
+                    ProductCard(product: snapshot.data!.docs[index].data()),
+            separatorBuilder: (context, index) => SizedBox(width: 10),
+            itemCount: snapshot.data!.docs.length,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildDiscountedProduct() {
+    return SizedBox(
+      height: 250,
+      width: double.maxFinite,
+      child: FutureBuilder(
+        future:
+            FirebaseFirestore.instance
+                .collection("ProductDetails")
+                .orderBy("discount", descending: true)
+                .limit(5)
+                .get(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
