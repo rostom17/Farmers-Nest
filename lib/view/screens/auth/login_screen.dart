@@ -1,5 +1,7 @@
 import 'package:farmers_nest/core/color_pallet.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -11,9 +13,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final RegExp emailChekcer = RegExp(
+    r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$',
+  );
+
   final TextEditingController _emailTEC = TextEditingController();
   final TextEditingController _passwordTEC = TextEditingController();
-  final GlobalKey _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _showPass = false;
 
@@ -21,6 +27,32 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _showPass = !_showPass;
     });
+  }
+
+  Future<void> login() async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        final UserCredential = await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+              email: _emailTEC.text.trim(),
+              password: _passwordTEC.text,
+            );
+        if (UserCredential.user?.uid != null) {
+          Get.offAllNamed("/");
+        }
+      } on FirebaseAuthException catch (e) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("${e.message}")));
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    _emailTEC.dispose();
+    _passwordTEC.dispose();
+    super.dispose();
   }
 
   @override
@@ -32,22 +64,26 @@ class _LoginScreenState extends State<LoginScreen> {
         padding: EdgeInsets.only(left: 16, right: 16, top: 12),
         child: Form(
           key: _formKey,
-          child: Column(
-            children: [
-              SizedBox(height: screenHeight * .2),
-              Text("Login", style: Theme.of(context).textTheme.headlineMedium),
-              const SizedBox(height: 32),
-              _buildLoginField("Email", _emailTEC),
-              const SizedBox(height: 20),
-              _buildLoginField("Password", _passwordTEC),
-              const SizedBox(height: 32),
-              ElevatedButton(onPressed: () {}, child: Text("Login")),
-              const SizedBox(height: 32),
-              _buildDivider(context),
-              const SizedBox(height: 32),
-              _buildSignInWithGoogleButton(),
-              const SizedBox(height: 16),
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: screenHeight * .2),
+                Text(
+                  "Login",
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+                const SizedBox(height: 32),
+                _buildLoginField("Email", _emailTEC),
+                const SizedBox(height: 20),
+                _buildLoginField("Password", _passwordTEC),
+                const SizedBox(height: 32),
+                ElevatedButton(onPressed: login, child: Text("Login")),
+                const SizedBox(height: 32),
+                _buildDivider(context),
+                const SizedBox(height: 32),
+                _buildSignInWithGoogleButton(),
+              ],
+            ),
           ),
         ),
       ),
@@ -64,8 +100,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             TextButton(
-              onPressed: () {},
-              child: Text("Register",style: TextStyle(color: ColorPallet.mainColorTheme),),
+              onPressed: () {
+                Get.toNamed("/registrationScreen");
+              },
+              child: Text(
+                "Register",
+                style: TextStyle(color: ColorPallet.mainColorTheme),
+              ),
             ),
           ],
         ),
@@ -101,18 +142,22 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextFormField(
       decoration: InputDecoration(
         label: Text(label),
-        suffixIcon: label == "Password"
-            ? IconButton(
-                onPressed: _toggleShowPass,
-                icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
-              )
-            : null,
+        suffixIcon:
+            label == "Password"
+                ? IconButton(
+                  onPressed: _toggleShowPass,
+                  icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
+                )
+                : null,
       ),
       obscureText: label == "Password" && !_showPass ? true : false,
       controller: controller,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (String? value) {
         if (value?.trim().isEmpty ?? true) {
           return "$label can't be empty";
+        } else if (label == "Email" && emailChekcer.hasMatch(value!) == false) {
+          return "Enter valid $label";
         } else {
           null;
         }

@@ -6,6 +6,7 @@ import 'package:farmers_nest/view/screens/product_screen.dart';
 import 'package:farmers_nest/view/screens/user_profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:farmers_nest/view/screens/bottom_nav_screen.dart';
 
@@ -18,7 +19,8 @@ class FarmersNest extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: _lightTheme(),
       initialBinding: Binder(),
-      initialRoute: "/",
+      initialRoute:
+          FirebaseAuth.instance.currentUser != null ? "/" : "/loginScreen",
       getPages: [
         GetPage(name: "/", page: () => BottomNavigationScreen()),
         GetPage(name: "/productScreen", page: () => ProductScreen()),
@@ -105,6 +107,16 @@ class FarmersNest extends StatelessWidget {
       inputDecorationTheme: InputDecorationTheme(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.black),
+          borderRadius: BorderRadius.circular(12),
+        ),
+
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red),
+          borderRadius: BorderRadius.circular(12),
+        ),
+
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 2),
           borderRadius: BorderRadius.circular(12),
         ),
 

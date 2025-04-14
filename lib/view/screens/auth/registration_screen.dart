@@ -1,5 +1,6 @@
 import 'package:farmers_nest/core/color_pallet.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -38,7 +39,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             child: Column(
               children: [
                 SizedBox(height: screenHeight * .2),
-                Text("Registration", style: Theme.of(context).textTheme.headlineMedium),
+                Text(
+                  "Registration",
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
                 const SizedBox(height: 32),
                 _buildLoginField("Name", _nameTEC),
                 const SizedBox(height: 20),
@@ -71,7 +75,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Get.back();
+              },
               child: Text(
                 "Login",
                 style: TextStyle(color: ColorPallet.mainColorTheme),
@@ -97,12 +103,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     return TextFormField(
       decoration: InputDecoration(
         label: Text(label),
-        suffixIcon: label == "Password"
-            ? IconButton(
-                onPressed: _toggleShowPass,
-                icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
-              )
-            : null,
+        suffixIcon:
+            label == "Password"
+                ? IconButton(
+                  onPressed: _toggleShowPass,
+                  icon: _showPass ? Icon(Iconsax.eye) : Icon(Iconsax.eye_slash),
+                )
+                : null,
       ),
       obscureText: label == "Password" && !_showPass ? true : false,
       controller: controller,
