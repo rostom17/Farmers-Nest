@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "139656798191",
+    "project_id": "farmers-nest-de9c5",
+    "storage_bucket": "farmers-nest-de9c5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139656798191:android:554a693df58405c518201a",
+        "android_client_info": {
+          "package_name": "com.example.farmers_nest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGJi82IX4thH0yj3plGFQiwUDXkAO2Bok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139656798191:android:fbe914bdb9964cdd18201a",
+        "android_client_info": {
+          "package_name": "com.example.my_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGJi82IX4thH0yj3plGFQiwUDXkAO2Bok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
