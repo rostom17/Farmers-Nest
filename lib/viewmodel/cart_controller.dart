@@ -34,7 +34,29 @@ class CartController {
             .doc("${user?.uid}")
             .collection('items')
             .get();
+
     var list = data.docs.map((doc) => doc.data()).toList();
+
     return list;
+  }
+
+  Future<double> fetchTotalCartPrice() async {
+    final user = FirebaseAuth.instance.currentUser;
+    double total = 0;
+    if (user == null) throw Exception("User not Logged In");
+    final data =
+        await FirebaseFirestore.instance
+            .collection("Carts")
+            .doc(user?.uid)
+            .collection("items")
+            .get();
+    for (var doc in data.docs) {
+      var x = doc.data();
+      double pPrice = x['price'] ?? 0;
+      int qty = x['quantity'] ?? 1;
+      //print("price : $pPrice\nquantity: $qty");
+      total += pPrice * qty;
+    }
+    return total;
   }
 }

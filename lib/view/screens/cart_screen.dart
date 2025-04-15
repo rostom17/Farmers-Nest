@@ -15,7 +15,6 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: AppBar(title: Text("Your Cart")),
       body: Padding(
         padding: EdgeInsets.only(top: 10, left: 20, right: 20),
         child: Column(
@@ -52,38 +51,55 @@ class _CartScreenState extends State<CartScreen> {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Toal Price"), Text("\$23.89")],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [Text("Discount"), Text("\$6.45")],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: FutureBuilder(
+              future: _cartController.fetchTotalCartPrice(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                }
+                if (!snapshot.hasData) {
+                  return Center(child: Text("Add Something to Cart"));
+                }
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                      "Final Price",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: ColorPallet.mainColorTheme,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Toal Price"),
+                        Text("\$${snapshot.data}"),
+                      ],
                     ),
-                    Text(
-                      "\$17.31",
-                      style: TextStyle(
-                        fontSize: 23,
-                        color: ColorPallet.mainColorTheme,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Discount"),
+                        Text("\$${(snapshot.data! * .15).toStringAsFixed(2)}"),
+                      ],
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Final Price",
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: ColorPallet.mainColorTheme,
+                          ),
+                        ),
+                        Text(
+                          "\$${(snapshot.data! * .85).toStringAsFixed(2)}",
+                          style: TextStyle(
+                            fontSize: 23,
+                            color: ColorPallet.mainColorTheme,
+                          ),
+                        ),
+                      ],
+                    ),
+                    ElevatedButton(onPressed: () {}, child: Text("Pace Order")),
                   ],
-                ),
-                ElevatedButton(onPressed: () {}, child: Text("Pace Order")),
-              ],
+                );
+              },
             ),
           ),
         ),
