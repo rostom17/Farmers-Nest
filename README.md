@@ -26,4 +26,5 @@ FARMERS-NEST is a mobile application built with Flutter, designed to provide a s
 
 TO run this application make sure your Widows/mac device has npm, and firestore setup
 
-ignore_it/1.Login Screen.jpg ignore_it/2.Registration Screen.jpg ignore_it/3.HomeScreen.jpg ignore_it/4.CategoryScreen.jpg ignore_it/5.CartScreen.jpg ignore_it/6.ProfileScreen.jpg ignore_it/7.ProductScreen.jpg ignore_it/8.Pruduct Filter.jpg
+
+![alt text](<1.Login Screen.jpg>) ![alt text](<2.Registration Screen.jpg>) ![alt text](3.HomeScreen.jpg) ![alt text](4.CategoryScreen.jpg) ![alt text](5.CartScreen.jpg) ![alt text](6.ProfileScreen.jpg) ![alt text](7.ProductScreen.jpg) ![alt text](<8.Pruduct Filter.jpg>)
