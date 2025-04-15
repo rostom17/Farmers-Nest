@@ -96,7 +96,16 @@ class _CartScreenState extends State<CartScreen> {
                         ),
                       ],
                     ),
-                    ElevatedButton(onPressed: () {}, child: Text("Pace Order")),
+                    ElevatedButton(
+                      onPressed: () async {
+                        _cartController.clearUserCart();
+                        await Future.delayed(Duration(microseconds: 400));
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text("Order Placed")));
+                      },
+                      child: Text("Pace Order"),
+                    ),
                   ],
                 );
               },

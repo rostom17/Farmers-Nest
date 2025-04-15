@@ -59,4 +59,20 @@ class CartController {
     }
     return total;
   }
+
+  Future<void> clearUserCart() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    final cartItemsRef = FirebaseFirestore.instance
+        .collection('Carts')
+        .doc(user.uid)
+        .collection('items');
+
+    final snapshot = await cartItemsRef.get();
+
+    for (var doc in snapshot.docs) {
+      await doc.reference.delete();
+    }
+  }
 }
