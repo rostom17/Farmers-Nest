@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmers_nest/view/screens/product_list_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});
@@ -34,7 +36,16 @@ class _CategoryScreenState extends State<CategoryScreen> {
               ),
               itemBuilder: (contex, index) {
                 return InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Get.to(
+                      () => ProductListScreen(
+                        fromCategory: true,
+                        field: "category",
+                        condition:
+                            "${snapshot.data!.docs[index].data()["name"]}",
+                      ),
+                    );
+                  },
                   child: Card(
                     elevation: 3,
                     color: chooseColor(index),

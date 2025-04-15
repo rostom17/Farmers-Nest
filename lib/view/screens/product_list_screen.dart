@@ -3,7 +3,16 @@ import 'package:farmers_nest/view/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 
 class ProductListScreen extends StatefulWidget {
-  const ProductListScreen({super.key});
+  const ProductListScreen({
+    required this.field,
+    required this.condition,
+    this.fromCategory = false,
+    super.key,
+  });
+
+  final String field;
+  final String condition;
+  final bool fromCategory;
 
   @override
   State<ProductListScreen> createState() => _ProductListScreenState();
@@ -17,10 +26,15 @@ class _ProductListScreenState extends State<ProductListScreen> {
         padding: const EdgeInsets.all(8.0),
         child: FutureBuilder(
           future:
-              FirebaseFirestore.instance
-                  .collection("ProductDetails")
-                  .where("category", isEqualTo: "Spices")
-                  .get(),
+              widget.fromCategory
+                  ? FirebaseFirestore.instance
+                      .collection("ProductDetails")
+                      .where(widget.field, isEqualTo: widget.condition)
+                      .get()
+                  : FirebaseFirestore.instance
+                      .collection("ProductDetails")
+                      .orderBy("discount", descending: true)
+                      .get(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());

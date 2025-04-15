@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context: context,
                 sectionName: "Best Selling",
                 buttonName: "See All",
+                condition: "Best Selling",
               ),
               const SizedBox(height: 16),
               _buildProductCard(filed: "remark", condition: "Best Selling"),
@@ -55,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 context: context,
                 sectionName: "New Arrival",
                 buttonName: "See All",
+                condition: "Organic",
               ),
               const SizedBox(height: 16),
               _buildProductCard(filed: "remark", condition: "Organic"),
@@ -77,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
     required BuildContext context,
     required String sectionName,
     required String buttonName,
+    String condition = "Best Selling",
   }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -84,7 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
         Text(sectionName, style: Theme.of(context).textTheme.titleLarge),
         TextButton(
           onPressed: () {
-            Get.to(() => ProductListScreen());
+            Get.to(
+              () => ProductListScreen(field: "remark", condition: sectionName),
+            );
           },
           child: Text(buttonName),
         ),
