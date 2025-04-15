@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farmers_nest/view/screens/product_list_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -81,7 +82,12 @@ class _HomeScreenState extends State<HomeScreen> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(sectionName, style: Theme.of(context).textTheme.titleLarge),
-        TextButton(onPressed: () {}, child: Text(buttonName)),
+        TextButton(
+          onPressed: () {
+            Get.to(() => ProductListScreen());
+          },
+          child: Text(buttonName),
+        ),
       ],
     );
   }
