@@ -22,9 +22,20 @@ FARMERS-NEST is a mobile application built with Flutter, designed to provide a s
     * **Firebase Authentication:** Provides secure and easy-to-implement user authentication (email/password, social login, etc.).
     * **Firebase Firestore:** A flexible, scalable NoSQL cloud database for storing and syncing data.
 
-## Getting Started
 
-TO run this application make sure your Widows/mac device has npm, and firestore setup
+## Project ScreeenShot
 
 
 ![alt text](<1.Login Screen.jpg>) ![alt text](<2.Registration Screen.jpg>) ![alt text](3.HomeScreen.jpg) ![alt text](4.CategoryScreen.jpg) ![alt text](5.CartScreen.jpg) ![alt text](6.ProfileScreen.jpg) ![alt text](7.ProductScreen.jpg) ![alt text](<8.Pruduct Filter.jpg>)
+
+
+## Project Video
+
+<video controls src="screenshots/FarmersNest Demo Video.mp4" title="Title"></video>
+
+## Apk of link of this app
+
+https://drive.google.com/file/d/1wkgTT6gnW0k9pVqPRLrtRUknLiUB5Brs/view?usp=sharing
+
+## Project Report Link of this app
+https://drive.google.com/file/d/1oi7fUHpl3cUjMRiT4vxR720mU_t1LiS7/view?usp=drivesdk
