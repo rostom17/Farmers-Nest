@@ -42,9 +42,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         Get.offAllNamed('/');
       }
     } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("${e.message}")));
+      if (mounted) {
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("${e.message}")));
+      }
     }
   }
 
@@ -152,9 +154,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       validator: (String? value) {
         if (value?.trim().isEmpty ?? true) {
           return "$label can't be empty";
-        } else {
-          null;
         }
+        return null;
       },
     );
   }

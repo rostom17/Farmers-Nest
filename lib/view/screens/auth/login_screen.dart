@@ -32,18 +32,20 @@ class _LoginScreenState extends State<LoginScreen> {
   Future<void> login() async {
     if (_formKey.currentState!.validate()) {
       try {
-        final UserCredential = await FirebaseAuth.instance
+        final usrCredential = await FirebaseAuth.instance
             .signInWithEmailAndPassword(
               email: _emailTEC.text.trim(),
               password: _passwordTEC.text,
             );
-        if (UserCredential.user?.uid != null) {
+        if (usrCredential.user?.uid != null) {
           Get.offAllNamed("/");
         }
       } on FirebaseAuthException catch (e) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("${e.message}")));
+        if (mounted) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text("${e.message}")));
+        }
       }
     }
   }
@@ -154,13 +156,16 @@ class _LoginScreenState extends State<LoginScreen> {
       controller: controller,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: (String? value) {
-        if (value?.trim().isEmpty ?? true) {
+        if (value == null) {
           return "$label can't be empty";
-        } else if (label == "Email" && emailChekcer.hasMatch(value!) == false) {
-          return "Enter valid $label";
-        } else {
-          null;
         }
+        if (value.trim().isEmpty) {
+          return "$label can't be empty";
+        }
+        if (label == "Email" && emailChekcer.hasMatch(value) == false) {
+          return "Enter valid $label";
+        }
+        return null;
       },
     );
   }
