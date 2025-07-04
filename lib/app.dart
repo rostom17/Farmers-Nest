@@ -60,7 +60,7 @@ class FarmersNest extends StatelessWidget {
         ),
       ),
 
-      cardTheme: CardTheme(color: ColorPallet.productColor2),
+      cardTheme: CardThemeData(color: ColorPallet.productColor2),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
